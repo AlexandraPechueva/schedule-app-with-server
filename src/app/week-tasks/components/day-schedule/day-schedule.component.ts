@@ -1,8 +1,9 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { delay, filter, map, tap } from 'rxjs/operators';
-import { Task } from 'src/app/models/week-tasks';
-import { WeekTasksService } from 'src/app/services/week-tasks.service';
+import { Task } from '../../models/week-tasks';
+import { WeekTasksService } from '../../services/week-tasks.service';
+
 
 @Component({
 	selector: 'app-day-schedule',

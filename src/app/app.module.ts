@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DayScheduleComponent } from './components/day-schedule/day-schedule.component';
+import { DayScheduleComponent } from '../app/week-tasks/components/day-schedule/day-schedule.component';
+import { WeekTasksComponent } from '../app/week-tasks/components/week-tasks/week-tasks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		DayScheduleComponent
+		WeekTasksComponent,
+		DayScheduleComponent,
 	],
 	imports: [
 		BrowserModule,

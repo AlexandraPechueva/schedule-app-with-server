@@ -1,0 +1,34 @@
+<div class="schedule">
+	<div class="data">
+
+		<ng-container *ngIf="dayTasks$ | async as dayTasks; else loading">
+			<ng-container *ngFor="let task of dayTasks">
+            <!-- <div [ngClass]="{'animation':true,
+                              'record': true,
+                              'passed-time': dayRecords[i].isPassed }">
+                <input type="text" type="time" class="editable" [(ngModel)]="dayRecords[i].time"
+                    (ngModelChange)="timeModelChangeFn($event)" (focusout)="inputFocusOut(i)">
+                <input type=" text" [(ngModel)]="dayRecords[i].task" class="editable">
+
+                <i (click)="deleteItem(record)" class="material-icons">delete</i>
+			</div> -->
+			<div [ngClass]="{'animation':true,
+							  'task': true}">
+				<p class="task-name">{{task.time}}</p>
+				<p class="task-content">{{task.content}}</p>
+
+				<i  class="material-icons">delete</i>
+			</div>
+
+		</ng-container>
+	</ng-container>
+
+
+		<ng-template #loading>
+			<div class="preloader">
+				<i class="circle-preloader"></i>
+			</div>
+		</ng-template>
+	</div>
+</div>
+

@@ -1,4 +1,4 @@
-@import '../../../styles/mixins/borders';
+@import '../../../../styles/mixins/borders';
 
 :host {
 	@include app-border();
@@ -23,7 +23,16 @@
 .task {
 	text-align: center;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
+	
+	.task-name {
+		width: 25%;
+	}
+
+	.task-content {
+		width: 75%;
+		text-align: left;
+	}
 
 	> i {
 		width: 50px;
