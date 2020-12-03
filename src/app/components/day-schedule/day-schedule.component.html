@@ -1,0 +1,26 @@
+<div class="schedule">
+	<div class="data">
+
+		<ng-container *ngIf="dayTasks$ | async as dayTasks; else loading">
+			<ng-container *ngFor="let task of dayTasks">
+
+			<div [ngClass]="{'animation':true,
+							  'task': true}">
+				<p>{{task.time}}</p>
+				<p>{{task.content}}</p>
+
+				<i  class="material-icons">delete</i>
+			</div>
+
+		</ng-container>
+	</ng-container>
+
+
+		<ng-template #loading>
+			<div class="preloader">
+				<i class="circle-preloader"></i>
+			</div>
+		</ng-template>
+	</div>
+</div>
+

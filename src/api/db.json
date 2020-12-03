@@ -1,0 +1,45 @@
+{
+	"weekTasks": [
+		{
+			"day": {"id": 1, "name":"пн"},
+			"tasks": [
+				{"id": 1, "time": "10:00", "content":"task1"},
+				{"id": 2, "time": "11:00", "content":"task2"},
+				{"id": 3, "time": "12:00", "content":"task3"}
+			]
+		},
+		{
+			"day": {"id": 2, "name":"вт"},
+			"tasks": []
+		},
+		{
+			"day": {"id": 3, "name":"ср"},
+			"tasks": [
+				{"id": 1, "time": "17:00", "content":"task1"},
+				{"id": 2, "time": "18:00", "content":"task2"},
+				{"id": 3, "time": "19:00", "content":"task3"}
+			]
+		},
+		{
+			"day": {"id": 4, "name":"чт"},
+			"tasks": [
+				{"id": 1, "time": "17:00", "content":"task1"},
+				{"id": 2, "time": "18:00", "content":"task2"},
+				{"id": 3, "time": "19:00", "content":"task3"}
+			]
+		},
+		{
+			"day": {"id": 5, "name":"пт"},
+			"tasks": []
+		},
+		{
+			"day": {"id": 6, "name":"сб"},
+			"tasks": []
+		},
+		{
+			"day": {"id": 7, "name":"вс"},
+			"tasks": []
+		}
+	]
+
+}
