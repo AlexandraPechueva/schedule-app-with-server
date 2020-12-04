@@ -20,6 +20,14 @@
 	height: 100%;
 }
 
+.data {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 0;
+	flex-grow: 1;
+	justify-content: center;
+}
+
 .task {
 	text-align: center;
 	display: flex;

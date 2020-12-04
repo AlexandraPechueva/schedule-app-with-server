@@ -7,19 +7,33 @@ import { DayScheduleComponent } from '../app/week-tasks/components/day-schedule/
 import { WeekTasksComponent } from '../app/week-tasks/components/week-tasks/week-tasks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteConfirmComponent } from './week-tasks/components/delete-confirm/delete-confirm.component';
+import { DialogComponent } from './dialog/components/dialog/dialog.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		WeekTasksComponent,
 		DayScheduleComponent,
+		DeleteConfirmComponent,
+		DialogComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
 		BrowserAnimationsModule,
+		MatDialogModule,
 	],
+
+	exports: [
+		MatDialogModule,
+	],
+
+	// entryComponents: [
+	// 	DialogComponent
+	// ],
 	providers: [],
 	bootstrap: [AppComponent]
 })
