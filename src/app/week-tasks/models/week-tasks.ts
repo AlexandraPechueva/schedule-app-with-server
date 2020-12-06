@@ -1,17 +1,12 @@
 export interface Task {
-	id: Number;
+	id?: Number;
 	time: string;
 	content: string;
-
+	dayId?: Number;
 }
 
 export interface Day {
 	id: number;
 	name: string;
 	shortName: string;
-}
-
-export interface WeekTasks {
-	day: Day;
-	tasks: Task[];
 }

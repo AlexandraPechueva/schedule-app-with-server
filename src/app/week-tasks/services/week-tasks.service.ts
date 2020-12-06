@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { catchError, delay } from 'rxjs/operators';
-import { Day, Task, WeekTasks } from '../models/week-tasks';
+import { Day, Task } from '../models/week-tasks';
 
 
 
@@ -30,7 +30,11 @@ export class WeekTasksService {
 		return this._http.delete(this._tasksUrl + '/' + taskId);
 	}
 
-	// addTask(newTask: Task): Observable<object> {
-	// 	return this._http.post(this._tasksUrl, newTask);
-	// }
+	addTask(newTask: Task): Observable<object> {
+		return this._http.post(this._tasksUrl, newTask);
+	}
+
+	changeTask(taskId: Number, changedTask): Observable<object> {
+		return this._http.put(this._tasksUrl + '/' + taskId, changedTask);
+	}
 }

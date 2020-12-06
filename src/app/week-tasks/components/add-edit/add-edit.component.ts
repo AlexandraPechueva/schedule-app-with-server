@@ -1,4 +1,6 @@
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Task } from '../../models/week-tasks';
 
 @Component({
   selector: 'app-add-edit',
@@ -8,14 +10,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class AddEditComponent implements OnInit {
 
   constructor() { }
-	modalData = {
+	modalData: Task = {
 		time: '',
-		task: ''
+		content: '',
 	}
 
-  ngOnInit() {
-	console.log(this.modalData)
-  }
+	ngOnInit() {
+		console.log(this.modalData)
+	}
 
 
 
