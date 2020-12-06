@@ -1,45 +1,59 @@
 {
-	"weekTasks": [
-		{
-			"day": {"id": 1, "name":"пн"},
-			"tasks": [
-				{"id": 1, "time": "10:00", "content":"task1"},
-				{"id": 2, "time": "11:00", "content":"task2"},
-				{"id": 3, "time": "12:00", "content":"task3"}
-			]
-		},
-		{
-			"day": {"id": 2, "name":"вт"},
-			"tasks": []
-		},
-		{
-			"day": {"id": 3, "name":"ср"},
-			"tasks": [
-				{"id": 1, "time": "17:00", "content":"task1"},
-				{"id": 2, "time": "18:00", "content":"task2"},
-				{"id": 3, "time": "19:00", "content":"task3"}
-			]
-		},
-		{
-			"day": {"id": 4, "name":"чт"},
-			"tasks": [
-				{"id": 1, "time": "17:00", "content":"task1"},
-				{"id": 2, "time": "18:00", "content":"task2"},
-				{"id": 3, "time": "19:00", "content":"task3"}
-			]
-		},
-		{
-			"day": {"id": 5, "name":"пт"},
-			"tasks": []
-		},
-		{
-			"day": {"id": 6, "name":"сб"},
-			"tasks": []
-		},
-		{
-			"day": {"id": 7, "name":"вс"},
-			"tasks": []
-		}
-	]
-
+  "days": [
+    {
+      "id": 1,
+      "name": "понедельник",
+      "shortName": "пн"
+    },
+    {
+      "id": 2,
+      "name": "вторник",
+      "shortName": "вт"
+    },
+    {
+      "id": 3,
+      "name": "среда",
+      "shortName": "ср"
+    },
+    {
+      "id": 4,
+      "name": "четверг",
+      "shortName": "чт"
+    },
+    {
+      "id": 5,
+      "name": "пятница",
+      "shortName": "пт"
+    },
+    {
+      "id": 6,
+      "name": "суббота",
+      "shortName": "сб"
+    },
+    {
+      "id": 7,
+      "name": "воскресенье",
+      "shortName": "вс"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 2,
+      "time": "11:00",
+      "content": "task2",
+      "dayId": 1
+    },
+    {
+      "id": 4,
+      "time": "17:00",
+      "content": "task1",
+      "dayId": 7
+    },
+    {
+      "id": 5,
+      "time": "18:00",
+      "content": "task2",
+      "dayId": 7
+    }
+  ]
 }

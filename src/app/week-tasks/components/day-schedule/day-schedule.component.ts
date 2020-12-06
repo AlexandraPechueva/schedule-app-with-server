@@ -1,10 +1,11 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { delay, filter, map, tap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { concatMap, startWith } from 'rxjs/operators';
 import { DialogComponent } from 'src/app/dialog/components/dialog/dialog.component';
 import { Task } from '../../models/week-tasks';
 import { WeekTasksService } from '../../services/week-tasks.service';
+import { AddEditComponent } from '../add-edit/add-edit.component';
 import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.component';
 
 
@@ -15,9 +16,12 @@ import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.compone
 })
 export class DayScheduleComponent implements OnChanges {
 
-	constructor(private _weekTasksService: WeekTasksService, private _dialog: MatDialog) { }
+	constructor(private _weekTasksService: WeekTasksService,
+		private _dialog: MatDialog) { }
 
 	dayTasks$: Observable<Task[]>;
+	update$ = new Subject<Task[]>();
+
 	@Input() activatedDay = 0;
 
 	ngOnChanges() {
@@ -26,31 +30,51 @@ export class DayScheduleComponent implements OnChanges {
 	}
 
 	private _getData() {
-		return this.dayTasks$ = this._weekTasksService.getWeekTasks().pipe(
-			delay(2000),
-			map(items => items.filter(
-				item => item.day.id == this.activatedDay).map(item => item.tasks)[0]
-		));
+		this.dayTasks$ = this.update$.pipe(
+			startWith(''),
+			concatMap(() => {
+				return this._weekTasksService.getTasks(this.activatedDay)}),
+		)
 	}
 
-	deleteTask(taskId: Number) {
+	addTask() {
+		console.log('confirmresult');
+		const  dialogRef = this._dialog.open(DialogComponent, {
+			width: '450px',
+			data: { component: AddEditComponent,
+	}
+	});
+
+	dialogRef.afterClosed().subscribe(confirmresult => {
+		console.log(confirmresult);
+	});
+	}
+
+	deleteTaskConfirm(taskId: Number) {
 		console.log(taskId)
 		const  dialogRef = this._dialog.open(DialogComponent, {
 				width: '250px',
-				data: { component: DeleteConfirmComponent
+				data: { component: DeleteConfirmComponent,
+
 			}
 		});
 
 		dialogRef.afterClosed().subscribe(confirmresult => {
 			console.log(confirmresult);
 			if (confirmresult) { 
-				this._weekTasksService.deleteTask(taskId);
-				console.log("Delete confirm is approved by user.");
-			}
-
-			else {
-				console.log("Delete confirm is cancelled by user.");
+				this._deleteTask(taskId);
 			}
 		});
 	}
+
+	private _deleteTask(taskId) {
+		this._weekTasksService.deleteTask(taskId).subscribe(
+			_ => this.update$.next(),
+			error => {console.log('Произошла ошибка ' + error.status + ': ' + error.statusText)},
+		);
+	}
+
+	// private _addTask(newTask) {
+	// 	console.log(newTask)
+	// }
 }

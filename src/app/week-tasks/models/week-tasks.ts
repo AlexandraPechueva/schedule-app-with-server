@@ -8,6 +8,7 @@ export interface Task {
 export interface Day {
 	id: number;
 	name: string;
+	shortName: string;
 }
 
 export interface WeekTasks {

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { WeekTasks } from '../models/week-tasks';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { catchError, delay } from 'rxjs/operators';
+import { Day, Task, WeekTasks } from '../models/week-tasks';
+
 
 
 @Injectable({
@@ -12,12 +13,24 @@ export class WeekTasksService {
 
 	constructor(private _http: HttpClient) { }
 
-	private _url = '/api/weekTasks';
-	getWeekTasks(): Observable<WeekTasks[]> {
-		return this._http.get<WeekTasks[]>(this._url);
+	private _daysUrl ='/api/days';
+	private _tasksUrl ='/api/tasks';
+
+	getDays(): Observable<Day[]> {
+		return this._http.get<Day[]>(this._daysUrl);
 	}
 
-	deleteTask(id) {
-		return this._http.delete(this._url + "/" + id);
+	getTasks(dayId: Number): Observable<Task[]> {
+		return this._http.get<Task[]>(this._tasksUrl + '?dayId=' + dayId).pipe(
+			delay(2000)
+		)
 	}
+
+	deleteTask(taskId: Number): Observable<object> {
+		return this._http.delete(this._tasksUrl + '/' + taskId);
+	}
+
+	// addTask(newTask: Task): Observable<object> {
+	// 	return this._http.post(this._tasksUrl, newTask);
+	// }
 }

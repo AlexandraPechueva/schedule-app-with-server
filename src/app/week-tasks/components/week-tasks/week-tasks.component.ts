@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { WeekTasksService } from '../../services/week-tasks.service';
 
 @Component({
@@ -11,23 +11,12 @@ export class WeekTasksComponent implements OnInit {
 
 	constructor(private _weekTasksService: WeekTasksService) { }
 
-	readonly weekDays$ = this._weekTasksService.getWeekTasks().pipe(
-		map(items => {
-			return items.map(item => {
-				return item.day;
-			})
-		})
-
+	readonly weekDays$ = this._weekTasksService.getDays();
+	readonly dayNumber$ = this.weekDays$.pipe(
+		map(days => days.filter(day => day.shortName == this._today)[0].id)
 	);
 
 	private _today = new Date().toLocaleDateString('ru-Ru', { weekday: 'short' });
-
-	private dayNumber$ = this.weekDays$.pipe(
-		map(days => {
-			return days.filter(day => day.name == this._today).map(day => day.id)[0]
-		})
-	);
-
 	private _currentDayNumber = 0;
 
 	ngOnInit() {

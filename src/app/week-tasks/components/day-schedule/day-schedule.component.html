@@ -2,27 +2,35 @@
 	<div class="data">
 
 		<ng-container *ngIf="dayTasks$ | async as dayTasks; else loading">
-			<ng-container *ngFor="let task of dayTasks">
-				<div [ngClass]="{'animation':true,
-								'task': true}">
-					<p class="task-name">{{task.time}}</p>
-					<p class="task-content">{{task.content}}</p>
+			<ng-container *ngIf="dayTasks.length != 0; else emptyList">
+				<ng-container *ngFor="let task of dayTasks">
+					<div [ngClass]="{'animation':true,
+									'task': true}">
+						<p class="task-name">{{task.time}}</p>
+						<p class="task-content">{{task.content}}</p>
 
-					<i class="material-icons" (click)="deleteTask(task.id)">delete</i>
-				</div>
+						<i class="material-icons" (click)="deleteTaskConfirm(task.id)">delete</i>
+					</div>
+				</ng-container>
+			</ng-container>
 		</ng-container>
-	</ng-container>
-
 
 		<ng-template #loading>
 			<div class="preloader">
 				<i class="circle-preloader"></i>
 			</div>
 		</ng-template>
+
+		<ng-template #emptyList>
+			<p class = "notice">В списке еще нет задач</p>
+		</ng-template>
+
+		<!-- <ng-container *ngIf="">
+				<ng-container *ngTemplateOutlet="loading"></ng-container>
+		</ng-container>	 -->
 	</div>
 
-	<button class="">
-	<i class="material-icons">add</i>
-</button>
+	<i class="material-icons" (click)="addTask()">add</i>
+
 </div>
 
