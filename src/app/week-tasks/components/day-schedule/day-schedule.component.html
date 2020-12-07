@@ -1,6 +1,9 @@
 <div class="schedule">
 
-	<i class="material-icons add-icon" (click)="addTask()">add</i>
+	<div class="icons-panel">
+		<i class="material-icons" routerLink ={{activatedDay}}>open_in_new</i>
+		<i class="material-icons" (click)="addTask()">add</i>
+	</div>
 
 	<div class="data">
 
@@ -20,9 +23,7 @@
 		</ng-container>
 
 		<ng-template #loading>
-			<div class="preloader">
-				<i class="circle-preloader"></i>
-			</div>
+			<app-preloader></app-preloader>
 		</ng-template>
 
 		<ng-template #emptyList>

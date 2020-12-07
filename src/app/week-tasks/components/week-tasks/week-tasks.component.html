@@ -1,5 +1,5 @@
 <div class="schedule-container">
-	<h1 class="title">Week schedule</h1>
+	<h1 class="title">Список задач</h1>
   
 	<div class="form-container">
 		<app-day-schedule [activatedDay]="activatedDay"></app-day-schedule>
@@ -11,7 +11,8 @@
 						<p [ngClass]="{
 							'day': true,
 							'day-activated': day.id == activatedDay
-						}" (click)="getDay(day.id)">{{ day.shortName }}</p>
+						}" (click)="getDay(day.id)"
+						>{{ day.shortName }}</p>
 					</ng-container>
 				
 			</div>

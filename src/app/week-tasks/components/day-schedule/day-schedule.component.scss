@@ -26,6 +26,14 @@
 	flex-grow: 1;
 }
 
+.icons-panel {
+	display: flex;
+	justify-content: space-between;
+	width: 60px;
+	margin-left: auto;
+	margin-bottom: 10px;
+}
+
 .task {
 	text-align: center;
 	display: flex;
@@ -54,37 +62,7 @@
 	text-align: center;
 }
 
-.preloader {
-	margin: 0 auto;
-	height: 100%;
-	display: flex;
-	align-items: center;
-}
 
-.add-icon {
-	margin-left: auto;
-	margin-bottom: 10px
-}
-
-.circle-preloader {
-	display: block;
-	width: 30px;
-	height: 30px;
-	border: 4px solid #444;
-	border-bottom-color: #888;
-	
-	border-radius: 50%;
-	
-	margin: 0 auto;
-	
-	animation: spin .75s infinite linear;
-}
-
-@keyframes spin {
-	100% {
-		transform: rotate(360deg);
-	}
-}
 
 @keyframes AddRecords {
 	0% {

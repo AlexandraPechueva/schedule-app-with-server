@@ -11,8 +11,11 @@ import { DeleteConfirmComponent } from './week-tasks/components/delete-confirm/d
 import { DialogComponent } from './dialog/components/dialog/dialog.component';
 import { AddEditComponent } from './week-tasks/components/add-edit/add-edit.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { TaskListComponent } from './week-tasks/components/task-list/task-list.component';
+import { PreloaderComponent } from './week-tasks/components/preloader/preloader.component';
 
 @NgModule({
 	declarations: [
@@ -22,6 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 		DeleteConfirmComponent,
 		DialogComponent,
 		AddEditComponent,
+		TaskListComponent,
+		PreloaderComponent,
 
 	],
 	imports: [
@@ -32,6 +37,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 		MatFormFieldModule,
 		MatDialogModule,
 		MatInputModule,
+		MatButtonModule,
 		FormsModule,
 	],
 
