@@ -2,8 +2,8 @@ import { ComponentType } from '@angular/cdk/portal';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { Component, ComponentFactory, ComponentRef, Input, OnChanges, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Observable, Subject } from 'rxjs';
-import { concatMap, map, startWith } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { combineAll, concatMap, map, startWith, take, tap } from 'rxjs/operators';
 import { DialogComponent } from 'src/app/dialog/components/dialog/dialog.component';
 import { Task } from '../../models/week-tasks';
 import { WeekTasksService } from '../../services/week-tasks.service';
@@ -27,12 +27,18 @@ export class DayScheduleComponent implements OnChanges {
 		private _dialog: MatDialog) { }
 
 	dayTasks$: Observable<Task[]>;
+	filteredDayTasks$:  Observable<Task[]>;
+
+	defaultState = 'Все';
+
+	filter$ = new BehaviorSubject(this.defaultState);
 	update$ = new Subject<Task[]>();
 
 	@Input() activatedDay = 0;
 
+	taskStates: string[] = ['Все','Активные','Прошедшие'];
+
 	ngOnChanges() {
-		console.log(this.activatedDay)
 		this._getData();
 	}
 
@@ -41,8 +47,17 @@ export class DayScheduleComponent implements OnChanges {
 			startWith(''),
 			concatMap(() => {
 				return this._weekTasksService.getTasks(this.activatedDay)}),
-			map(data => data.sort(this._compare))
-		)
+			map(data => data.sort(this._compare)),
+			tap(data => this._checkIsTimePassed(data))
+		);
+
+		this.filteredDayTasks$ = combineLatest(([this.dayTasks$, this.filter$])).pipe(
+			map(([dayTasks, filter]) => {
+				if(filter == 'Активные') {return dayTasks.filter(task => !task.isPassed) }
+					else if(filter == 'Прошедшие') {return dayTasks.filter(task => task.isPassed)}
+					else return dayTasks;
+			})
+		);
 	}
 
 	addTask() {
@@ -93,6 +108,11 @@ export class DayScheduleComponent implements OnChanges {
 		});
 	}
 
+	selectState(event) {
+		this.filter$.next(event.value);
+
+	}
+
 	private _openDialog(component: Function, width: string, modalData: ModalData ): MatDialogRef<any> {
 		return this._dialog.open(DialogComponent, {
 			width: width,
@@ -133,6 +153,7 @@ export class DayScheduleComponent implements OnChanges {
 			time: data.time,
 			content: data.content,
 			dayId: this.activatedDay,
+			isPassed: this._isPassed(data.time),
 		}
 	}
 
@@ -144,5 +165,19 @@ export class DayScheduleComponent implements OnChanges {
 			return 1;
 		}
 		return 0;
+	}
+
+	private _isPassed(time: string): boolean {
+		const today = new Date();
+		const currentDay = today.getDay() - 1;
+		const currentTime = today.getHours() + ":" + today.getMinutes();
+
+		return this.activatedDay < currentDay || time < currentTime;
+	}
+
+	private _checkIsTimePassed(dayTasks: Task[]) {
+		dayTasks.forEach(task => {
+			task.isPassed = this._isPassed(task.time)
+		});
 	}
 }

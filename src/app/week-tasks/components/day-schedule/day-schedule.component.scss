@@ -29,9 +29,11 @@
 .icons-panel {
 	display: flex;
 	justify-content: space-between;
-	width: 60px;
-	margin-left: auto;
 	margin-bottom: 10px;
+}
+
+.taskSelect {
+	border: none;
 }
 
 .task {
@@ -55,6 +57,12 @@
 	.task-content {
 		width: 80%;
 		text-align: left;
+	}
+}
+
+.passed-time {
+	> p {
+		color: $warning-color;
 	}
 }
 

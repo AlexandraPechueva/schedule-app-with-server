@@ -12,6 +12,7 @@ import { DialogComponent } from './dialog/components/dialog/dialog.component';
 import { AddEditComponent } from './week-tasks/components/add-edit/add-edit.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TaskListComponent } from './week-tasks/components/task-list/task-list.component';
@@ -38,6 +39,7 @@ import { PreloaderComponent } from './week-tasks/components/preloader/preloader.
 		MatDialogModule,
 		MatInputModule,
 		MatButtonModule,
+		MatSelectModule,
 		FormsModule,
 	],
 

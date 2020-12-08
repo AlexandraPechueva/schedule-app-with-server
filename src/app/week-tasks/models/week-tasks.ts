@@ -3,6 +3,7 @@ export interface Task {
 	time: string;
 	content: string;
 	dayId?: Number;
+	isPassed?: boolean;
 }
 
 export interface Day {
