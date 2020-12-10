@@ -1,8 +1,6 @@
 <div class="schedule">
-
-
 	<div class="icons-panel">
-		<i class="material-icons" routerLink ={{activatedDay}}>open_in_new</i>
+		<div class="icon"><i class="material-icons" routerLink ={{activatedDay}}>open_in_new</i></div>
 
 		<mat-form-field>
 			<mat-select class="taskSelect" placeholder="Наименование" [(value)]="defaultState" (selectionChange)="selectState($event)">
@@ -12,12 +10,12 @@
 			</mat-select>
 		</mat-form-field>
 
-		<i class="material-icons" (click)="addTask()">add</i>
+		<div class="icon"><i class="material-icons" (click)="addTask()">add</i></div>
 	</div>
 
 	<div class="data">
 
-		<ng-container *ngIf="filteredDayTasks$ | async as dayTasks; else loading">
+		<ng-container *ngIf="filteredDayTasks$ | async as dayTasks">
 			<ng-container *ngIf="dayTasks.length != 0; else emptyList">
 				<ng-container *ngFor="let task of dayTasks">
 					<div [ngClass]="{'animation':true,
@@ -29,21 +27,16 @@
 
 						<i class="material-icons" (click)="$event.stopPropagation();deleteTaskConfirm(task.id)">delete</i>
 					</div>
+
 				</ng-container>
 			</ng-container>
 		</ng-container>
 
-		<ng-template #loading>
-			<app-preloader></app-preloader>
-		</ng-template>
+	<app-preloader></app-preloader>
 
 		<ng-template #emptyList>
 			<p class = "notice">В списке еще нет задач</p>
 		</ng-template>
-
-		<!-- <ng-container *ngIf="">
-				<ng-container *ngTemplateOutlet="loading"></ng-container>
-		</ng-container>	 -->
 	</div>
 </div>
 

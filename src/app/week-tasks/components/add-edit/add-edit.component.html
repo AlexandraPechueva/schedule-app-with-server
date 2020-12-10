@@ -1,10 +1,14 @@
-<form class= "form">
+<form class="form" #addEditForm="ngForm">
 
 	<mat-form-field class="example-full-width">
-		<input matInput placeholder="время" name="time" type="time" [(ngModel)]="modalData.time">
+		<input matInput placeholder="время" name="time" type="time" [(ngModel)]="modalData.time" required #timeInput="ngModel" (blur)="onBlurMethod()">
+
+		<mat-error *ngIf="timeInput.hasError('required')">Это обязательное поле</mat-error>	
 	</mat-form-field>
 
 	<mat-form-field class="example-full-width">
-		<input matInput placeholder="задача" name="task" [(ngModel)]="modalData.content">
+		<input matInput placeholder="задача" name="task" [(ngModel)]="modalData.content" required minlength="3" #taskInput="ngModel" (blur)="onBlurMethod()">
+
+		<mat-error *ngIf="taskInput.hasError('required')">Это обязательное поле</mat-error>	
 	</mat-form-field>
 </form>

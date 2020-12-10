@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DayScheduleComponent } from '../app/week-tasks/components/day-schedule/day-schedule.component';
 import { WeekTasksComponent } from '../app/week-tasks/components/week-tasks/week-tasks.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteConfirmComponent } from './week-tasks/components/delete-confirm/delete-confirm.component';
@@ -17,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TaskListComponent } from './week-tasks/components/task-list/task-list.component';
 import { PreloaderComponent } from './week-tasks/components/preloader/preloader.component';
+import { LoaderInterceptor } from './week-tasks/services/loader.interceptor';
+import { LoaderService } from './week-tasks/services/loader.service';
 
 @NgModule({
 	declarations: [
@@ -28,7 +30,6 @@ import { PreloaderComponent } from './week-tasks/components/preloader/preloader.
 		AddEditComponent,
 		TaskListComponent,
 		PreloaderComponent,
-
 	],
 	imports: [
 		BrowserModule,
@@ -47,13 +48,17 @@ import { PreloaderComponent } from './week-tasks/components/preloader/preloader.
 		MatFormFieldModule,
 		MatDialogModule,
 		MatInputModule,
-
 	],
 
-	// entryComponents: [
-	// 	DialogComponent
-	// ],
-	providers: [],
+	entryComponents: [
+		LoaderInterceptor,
+	],
+	providers: [{
+		provide: HTTP_INTERCEPTORS,
+		useClass: LoaderInterceptor,
+		multi: true
+	  },
+	LoaderService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,11 +1,10 @@
-import { ComponentType } from '@angular/cdk/portal';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
-import { Component, ComponentFactory, ComponentRef, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
-import { combineAll, concatMap, map, startWith, take, tap } from 'rxjs/operators';
+import { concatMap, map, startWith, tap } from 'rxjs/operators';
 import { DialogComponent } from 'src/app/dialog/components/dialog/dialog.component';
 import { Task } from '../../models/week-tasks';
+import { LoaderService } from '../../services/loader.service';
 import { WeekTasksService } from '../../services/week-tasks.service';
 import { AddEditComponent } from '../add-edit/add-edit.component';
 import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.component';
@@ -24,7 +23,7 @@ interface ModalData {
 export class DayScheduleComponent implements OnChanges {
 
 	constructor(private _weekTasksService: WeekTasksService,
-		private _dialog: MatDialog) { }
+		private _dialog: MatDialog, public loaderService: LoaderService) { }
 
 	dayTasks$: Observable<Task[]>;
 	filteredDayTasks$:  Observable<Task[]>;
@@ -122,7 +121,8 @@ export class DayScheduleComponent implements OnChanges {
 					title: modalData.title,
 					time: modalData.time,
 					content: modalData.content,
-				}
+				},
+				isValid: false
 			}
 		});
 	}
@@ -169,10 +169,19 @@ export class DayScheduleComponent implements OnChanges {
 
 	private _isPassed(time: string): boolean {
 		const today = new Date();
-		const currentDay = today.getDay() - 1;
+		let currentDay = today.getDay() - 1;
 		const currentTime = today.getHours() + ":" + today.getMinutes();
 
-		return this.activatedDay < currentDay || time < currentTime;
+		if (currentDay < 0) {
+			currentDay = currentDay + 6;
+		}
+
+		if(this.activatedDay < currentDay) {
+			return true;
+		}
+		else {
+			return time < currentTime;
+		}
 	}
 
 	private _checkIsTimePassed(dayTasks: Task[]) {

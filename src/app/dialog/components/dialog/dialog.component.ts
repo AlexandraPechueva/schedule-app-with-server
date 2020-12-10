@@ -20,6 +20,8 @@ export class DialogComponent implements OnInit, OnDestroy {
 		const factory = this.resolver.resolveComponentFactory(this.data.component);
 		this.componentRef = this.vcRef.createComponent(factory);
 		this.componentRef.instance.modalData = this.data.modalData;
+		this.componentRef.instance.isValid = this.data.isValid;
+		console.log(this.data)
 	}
 
 	onNoClick() {

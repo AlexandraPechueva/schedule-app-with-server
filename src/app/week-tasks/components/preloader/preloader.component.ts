@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Subject } from 'rxjs';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
-  selector: 'app-preloader',
-  templateUrl: './preloader.component.html',
-  styleUrls: ['./preloader.component.scss']
+	selector: 'app-preloader',
+	templateUrl: './preloader.component.html',
+	styleUrls: ['./preloader.component.scss']
 })
-export class PreloaderComponent implements OnInit {
+export class PreloaderComponent {
 
-  constructor() { }
+	constructor(private loaderService: LoaderService){}
 
-  ngOnInit(): void {
-  }
-
+	isLoading$: Subject<boolean> = this.loaderService.isLoading$;
 }
