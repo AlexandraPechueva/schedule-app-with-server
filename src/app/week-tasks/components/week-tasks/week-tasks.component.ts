@@ -20,7 +20,7 @@ export class WeekTasksComponent implements OnInit {
 	private _currentDayNumber = 0;
 
 	ngOnInit() {
-		this.dayNumber$.subscribe(dayNumber => this._setCurrentDay(dayNumber))
+		this.dayNumber$.subscribe(dayNumber => this._setCurrentDay(dayNumber));
 	}
 
 	private _setCurrentDay(day: number) {

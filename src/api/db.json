@@ -1,146 +1,118 @@
 {
   "days": [
     {
-      "id": 1,
+      "id": 0,
       "name": "понедельник",
       "shortName": "пн"
     },
     {
-      "id": 2,
+      "id": 1,
       "name": "вторник",
       "shortName": "вт"
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "среда",
       "shortName": "ср"
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "четверг",
       "shortName": "чт"
     },
     {
-      "id": 5,
+      "id": 4,
       "name": "пятница",
       "shortName": "пт"
     },
     {
-      "id": 6,
+      "id": 5,
       "name": "суббота",
       "shortName": "сб"
     },
     {
-      "id": 7,
+      "id": 6,
       "name": "воскресенье",
       "shortName": "вс"
     }
   ],
   "tasks": [
     {
-      "isPassed": true,
-      "time": "13:45",
-      "content": "task1",
-      "dayId": 7,
-      "id": 3
-    },
-    {
-      "isPassed": true,
-      "time": "14:00",
-      "content": "task4",
-      "dayId": 7,
-      "id": 4
-    },
-    {
-      "isPassed": true,
-      "time": "13:30",
-      "content": "task3",
-      "dayId": 7,
-      "id": 5
-    },
-    {
-      "isPassed": true,
-      "time": "13:40",
-      "content": "task2",
-      "dayId": 7,
-      "id": 6
-    },
-    {
-      "isPassed": true,
-      "time": "15:30",
-      "content": "task6",
-      "dayId": 7,
-      "id": 7
-    },
-    {
-      "isPassed": true,
-      "time": "15:00",
-      "content": "task5",
-      "dayId": 7,
-      "id": 8
-    },
-    {
-      "isPassed": true,
-      "time": "11:00",
+      "time": "09:03",
       "content": "task2",
       "dayId": 1,
-      "id": 9
-    },
-    {
       "isPassed": true,
-      "time": "12:00",
-      "content": "task3",
-      "dayId": 1,
       "id": 10
     },
     {
-      "time": "21:00",
-      "content": "task5",
+      "time": "10:00",
+      "content": "task3",
+      "dayId": 1,
+      "isPassed": true,
+      "id": 11
+    },
+    {
+      "time": "11:01",
+      "content": "task4",
       "dayId": 1,
       "isPassed": true,
       "id": 12
     },
     {
-      "time": "23:00",
-      "content": "task6",
+      "time": "16:02",
+      "content": "task5",
       "dayId": 1,
       "isPassed": false,
       "id": 13
     },
     {
-      "time": "09:03",
-      "content": "task2",
-      "dayId": 2,
-      "isPassed": true,
+      "time": "22:20",
+      "content": "task6",
+      "dayId": 1,
+      "isPassed": false,
       "id": 14
     },
     {
-      "time": "10:00",
-      "content": "task3",
-      "dayId": 2,
-      "isPassed": true,
-      "id": 15
-    },
-    {
-      "time": "11:01",
+      "time": "20:04",
       "content": "task4",
-      "dayId": 2,
+      "dayId": 3,
+      "isPassed": false,
+      "id": 35
+    },
+    {
+      "time": "15:23",
+      "content": "task1",
+      "dayId": 3,
       "isPassed": true,
-      "id": 16
+      "id": 37
     },
     {
-      "time": "16:02",
-      "content": "task5",
-      "dayId": 2,
-      "isPassed": false,
-      "id": 17
+      "time": "16:00",
+      "content": "task2",
+      "dayId": 3,
+      "isPassed": true,
+      "id": 39
     },
     {
-      "time": "18:20",
-      "content": "task6",
-      "dayId": 2,
-      "isPassed": false,
-      "id": 18
+      "time": "16:00",
+      "content": "task1",
+      "dayId": 6,
+      "isPassed": true,
+      "id": 40
+    },
+    {
+      "time": "16:00",
+      "content": "task3",
+      "dayId": 4,
+      "isPassed": true,
+      "id": 41
+    },
+    {
+      "time": "17:00",
+      "content": "task3",
+      "dayId": 3,
+      "isPassed": true,
+      "id": 42
     }
   ]
 }

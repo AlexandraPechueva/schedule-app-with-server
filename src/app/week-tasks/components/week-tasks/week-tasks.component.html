@@ -8,13 +8,12 @@
 			<div class="days">
 
 				<ng-container *ngFor="let day of weekDays$ | async">
-						<p [ngClass]="{
+					<p [ngClass]="{
 							'day': true,
 							'day-activated': day.id == activatedDay
 						}" (click)="getDay(day.id)"
 						>{{ day.shortName }}</p>
-					</ng-container>
-				
+				</ng-container>
 			</div>
 		</div>
 	</div>

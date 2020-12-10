@@ -1,0 +1,21 @@
+@import '../../../../styles/utils/colors';
+
+.taskList {
+	width: 30%;
+	padding: 50px;
+}
+
+.task {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid $main-color;
+}
+
+.task-item {
+	margin-bottom: 0;
+
+	&:not(:last-child){
+		margin-right: 50px;
+	}
+}

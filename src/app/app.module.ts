@@ -57,7 +57,7 @@ import { LoaderService } from './week-tasks/services/loader.service';
 		provide: HTTP_INTERCEPTORS,
 		useClass: LoaderInterceptor,
 		multi: true
-	  },
+	},
 	LoaderService],
 	bootstrap: [AppComponent]
 })

@@ -47,7 +47,7 @@ export class DayScheduleComponent implements OnChanges {
 			concatMap(() => {
 				return this._weekTasksService.getTasks(this.activatedDay)}),
 			map(data => data.sort(this._compare)),
-			tap(data => this._checkIsTimePassed(data))
+			tap(data => this._checkIsTimePassed(data)),
 		);
 
 		this.filteredDayTasks$ = combineLatest(([this.dayTasks$, this.filter$])).pipe(
@@ -107,9 +107,8 @@ export class DayScheduleComponent implements OnChanges {
 		});
 	}
 
-	selectState(event) {
-		this.filter$.next(event.value);
-
+	selectState(value: string) {
+		this.filter$.next(value);
 	}
 
 	private _openDialog(component: Function, width: string, modalData: ModalData ): MatDialogRef<any> {
@@ -178,8 +177,11 @@ export class DayScheduleComponent implements OnChanges {
 		if(this.activatedDay < currentDay) {
 			return true;
 		}
+		else if (this.activatedDay == currentDay) {
+			return time < currentTime;;
+		}
 		else {
-			return time < currentTime;
+			return false;
 		}
 	}
 

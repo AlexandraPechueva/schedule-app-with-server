@@ -1,5 +1,8 @@
-	<ng-container *ngFor="let task of dayTasks">
-		<ul>
-			<li>{{task.time}} {{task.content}}</li>
-		</ul>
-	</ng-container>
+	<div class = "taskList">
+		<ng-container *ngFor="let task of dayTasks">
+			<div class="task">
+				<p class="task-item">{{task.time}}</p>
+				<p class="task-item">{{task.content}}</p>
+			</div>
+		</ng-container>
+	</div>

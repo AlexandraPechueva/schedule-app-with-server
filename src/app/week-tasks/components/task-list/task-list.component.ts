@@ -10,16 +10,10 @@ import { Task } from '../../models/week-tasks';
 export class TaskListComponent implements OnInit {
 
 	constructor(private _route: ActivatedRoute,) { }
-	readonly params$ = this._route.params;
 	dayTasks: Task[];
 	
 	ngOnInit() {
-		this.params$.subscribe(_ => console.log(_));
-		this._route.data.subscribe(data => {
-			console.log(data)
-			this.dayTasks = data['taskList']
-		}
-	);
+		this._route.data.subscribe(data => this.dayTasks = data['taskList']);
 	}
 
 }

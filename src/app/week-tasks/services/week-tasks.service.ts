@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Day, Task } from '../models/week-tasks';
 
@@ -22,7 +22,7 @@ export class WeekTasksService {
 
 	getTasks(dayId: Number): Observable<Task[]> {
 		return this._http.get<Task[]>(this._tasksUrl + '?dayId=' + dayId).pipe(
-			delay(2000)
+			delay(2000),
 		)
 	}
 

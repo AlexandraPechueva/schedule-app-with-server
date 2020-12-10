@@ -3,7 +3,7 @@
 		<div class="icon"><i class="material-icons" routerLink ={{activatedDay}}>open_in_new</i></div>
 
 		<mat-form-field>
-			<mat-select class="taskSelect" placeholder="Наименование" [(value)]="defaultState" (selectionChange)="selectState($event)">
+			<mat-select class="taskSelect" placeholder="Наименование" [(value)]="defaultState" (selectionChange)="selectState($event.value)">
 				<mat-option *ngFor="let state of taskStates" [value]="state">
 					{{state}}
 				</mat-option>
@@ -14,7 +14,6 @@
 	</div>
 
 	<div class="data">
-
 		<ng-container *ngIf="filteredDayTasks$ | async as dayTasks">
 			<ng-container *ngIf="dayTasks.length != 0; else emptyList">
 				<ng-container *ngFor="let task of dayTasks">
@@ -32,7 +31,7 @@
 			</ng-container>
 		</ng-container>
 
-	<app-preloader></app-preloader>
+		<app-preloader></app-preloader>
 
 		<ng-template #emptyList>
 			<p class = "notice">В списке еще нет задач</p>
