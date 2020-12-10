@@ -8,7 +8,7 @@ import { HttpClientModule,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteConfirmComponent } from './week-tasks/components/delete-confirm/delete-confirm.component';
-import { DialogComponent } from './dialog/components/dialog/dialog.component';
+import { DialogComponent } from './week-tasks/components/dialog/dialog.component';
 import { AddEditComponent } from './week-tasks/components/add-edit/add-edit.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';

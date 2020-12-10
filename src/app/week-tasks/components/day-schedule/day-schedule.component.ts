@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { concatMap, map, startWith, tap } from 'rxjs/operators';
-import { DialogComponent } from 'src/app/dialog/components/dialog/dialog.component';
+import { DialogComponent } from '../dialog/dialog.component';
 import { Task } from '../../models/week-tasks';
 import { LoaderService } from '../../services/loader.service';
 import { WeekTasksService } from '../../services/week-tasks.service';
