@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { WeekTasksService } from '../../services/week-tasks.service';
 
 @Component({

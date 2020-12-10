@@ -1,12 +1,6 @@
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { FormControl, NgForm, Validators } from '@angular/forms';
-import { filter } from 'rxjs/operators';
+import { Component, EventEmitter, ViewChild} from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Task } from '../../models/week-tasks';
-
-interface Data extends Task {
-	isValid: boolean;
-}
 
 @Component({
 	selector: 'app-add-edit',
@@ -15,21 +9,18 @@ interface Data extends Task {
 })
 export class AddEditComponent{
 	@ViewChild('addEditForm') private readonly _form: NgForm;
-	@ViewChild("taskInput") private readonly _task: ElementRef;
-	@ViewChild("timeInput") private readonly _time: ElementRef;
+	submit: EventEmitter<{}> = new EventEmitter<boolean>();
+
+	get formInvalid() {
+		return this._form.invalid;
+	}
 
 	modalData: Task = {
 		time: '',
 		content: '',
 	}
 
-	isValid = false;
-
-	onBlurMethod(){
-		console.log(this._task)
-		if(this._form.status !== 'INVALID')
-		{
-			this.isValid = true;
-		}
+	onInput(){
+		this.submit.emit(!this.formInvalid);
 	}
 }

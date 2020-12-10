@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { catchError, delay } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
 import { Day, Task } from '../models/week-tasks';
 
 

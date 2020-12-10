@@ -9,6 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogComponent implements OnInit, OnDestroy {
 	@ViewChild('target', { read: ViewContainerRef, static: true }) vcRef: ViewContainerRef;
 
+	isValid = false;
 	componentRef: ComponentRef<any>;
 
 	constructor(
@@ -20,12 +21,19 @@ export class DialogComponent implements OnInit, OnDestroy {
 		const factory = this.resolver.resolveComponentFactory(this.data.component);
 		this.componentRef = this.vcRef.createComponent(factory);
 		this.componentRef.instance.modalData = this.data.modalData;
-		this.componentRef.instance.isValid = this.data.isValid;
-		console.log(this.data)
+
+		if(!this.componentRef.instance.submit) {
+			this.isValid = true;
+		}
 	}
 
-	onNoClick() {
-		this.dialogRef.close();
+	ngAfterViewInit() {
+		if(this.componentRef.instance.submit) {
+
+			this.componentRef.instance.submit.subscribe(value => {
+				this.isValid = value;
+			});
+		}
 	}
 
 	ngOnDestroy() {

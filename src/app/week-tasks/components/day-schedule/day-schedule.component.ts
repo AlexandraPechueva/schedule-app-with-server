@@ -122,7 +122,6 @@ export class DayScheduleComponent implements OnChanges {
 					time: modalData.time,
 					content: modalData.content,
 				},
-				isValid: false
 			}
 		});
 	}
