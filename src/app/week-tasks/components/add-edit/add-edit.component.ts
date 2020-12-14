@@ -9,7 +9,7 @@ import { Task } from '../../models/week-tasks';
 })
 export class AddEditComponent{
 	@ViewChild('addEditForm') private readonly _form: NgForm;
-	submit: EventEmitter<{}> = new EventEmitter<boolean>();
+	submit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	get formInvalid() {
 		return this._form.invalid;
