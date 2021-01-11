@@ -52,8 +52,8 @@ export class DayScheduleComponent implements OnChanges {
 
 		this.filteredDayTasks$ = combineLatest(([this.dayTasks$, this.filter$])).pipe(
 			map(([dayTasks, filter]) => {
-				if(filter == 'Активные') {return dayTasks.filter(task => !task.isPassed) }
-					else if(filter == 'Прошедшие') {return dayTasks.filter(task => task.isPassed)}
+				if(filter === 'Активные') {return dayTasks.filter(task => !task.isPassed) }
+					else if(filter === 'Прошедшие') {return dayTasks.filter(task => task.isPassed)}
 					else return dayTasks;
 			})
 		);
@@ -177,7 +177,7 @@ export class DayScheduleComponent implements OnChanges {
 		if(this.activatedDay < currentDay) {
 			return true;
 		}
-		else if (this.activatedDay == currentDay) {
+		else if (this.activatedDay === currentDay) {
 			return time < currentTime;;
 		}
 		else {

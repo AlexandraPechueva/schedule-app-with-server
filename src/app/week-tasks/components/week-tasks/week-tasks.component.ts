@@ -13,7 +13,7 @@ export class WeekTasksComponent implements OnInit {
 
 	readonly weekDays$ = this._weekTasksService.getDays();
 	readonly dayNumber$ = this.weekDays$.pipe(
-		map(days => days.filter(day => day.shortName == this._today)[0].id)
+		map(days => days.find(day => day.shortName === this._today).id)
 	);
 
 	private _today = new Date().toLocaleDateString('ru-Ru', { weekday: 'short' });
