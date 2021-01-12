@@ -5,12 +5,12 @@ import { WeekTasksComponent } from './week-tasks/components/week-tasks/week-task
 import { TaskListResolver } from './week-tasks/services/task-list.resolver';
 
 const routes: Routes = [
-	{ path: '', component: WeekTasksComponent },
-	{ path: ':dayNumber', component: TaskListComponent, resolve: {taskList: TaskListResolver}}
+  { path: '', component: WeekTasksComponent },
+  { path: ':dayNumber', component: TaskListComponent, resolve: {taskList: TaskListResolver}}
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

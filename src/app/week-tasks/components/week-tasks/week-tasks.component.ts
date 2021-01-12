@@ -3,39 +3,39 @@ import { map } from 'rxjs/operators';
 import { WeekTasksService } from '../../services/week-tasks.service';
 
 @Component({
-	selector: 'app-week-tasks',
-	templateUrl: './week-tasks.component.html',
-	styleUrls: ['./week-tasks.component.scss']
+  selector: 'app-week-tasks',
+  templateUrl: './week-tasks.component.html',
+  styleUrls: ['./week-tasks.component.scss']
 })
 export class WeekTasksComponent implements OnInit {
 
-	constructor(private _weekTasksService: WeekTasksService) { }
+  constructor(private _weekTasksService: WeekTasksService) { }
 
-	readonly weekDays$ = this._weekTasksService.getDays();
-	readonly dayNumber$ = this.weekDays$.pipe(
-		map(days => days.find(day => day.shortName === this._today).id)
-	);
+  readonly weekDays$ = this._weekTasksService.getDays();
+  readonly dayNumber$ = this.weekDays$.pipe(
+    map(days => days.find(day => day.shortName === this._today).id)
+  );
 
-	private _today = new Date().toLocaleDateString('ru-Ru', { weekday: 'short' });
-	private _currentDayNumber = 0;
+  private _today = new Date().toLocaleDateString('ru-Ru', { weekday: 'short' });
+  private _currentDayNumber = 0;
 
-	ngOnInit() {
-		this.dayNumber$.subscribe(dayNumber => this._setCurrentDay(dayNumber));
-	}
+  ngOnInit() {
+    this.dayNumber$.subscribe(dayNumber => this._setCurrentDay(dayNumber));
+  }
 
-	private _setCurrentDay(day: number) {
-		this._currentDayNumber = day;
-	}
+  private _setCurrentDay(day: number) {
+    this._currentDayNumber = day;
+  }
 
-	set activatedDay(val: number) {
-		this._currentDayNumber = val;
-	}
-	
-	get activatedDay() {
-		return this._currentDayNumber;
-	}
+  set activatedDay(val: number) {
+    this._currentDayNumber = val;
+  }
 
-	getDay(dayNumber: number) {
-		this.activatedDay = dayNumber;
-	}
+  get activatedDay() {
+    return this._currentDayNumber;
+  }
+
+  getDay(dayNumber: number) {
+    this.activatedDay = dayNumber;
+  }
 }

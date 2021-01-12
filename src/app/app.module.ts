@@ -21,44 +21,44 @@ import { LoaderInterceptor } from './week-tasks/services/loader.interceptor';
 import { LoaderService } from './week-tasks/services/loader.service';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		WeekTasksComponent,
-		DayScheduleComponent,
-		DeleteConfirmComponent,
-		DialogComponent,
-		AddEditComponent,
-		TaskListComponent,
-		PreloaderComponent,
-	],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		HttpClientModule,
-		BrowserAnimationsModule,
-		MatFormFieldModule,
-		MatDialogModule,
-		MatInputModule,
-		MatButtonModule,
-		MatSelectModule,
-		FormsModule,
-	],
+  declarations: [
+    AppComponent,
+    WeekTasksComponent,
+    DayScheduleComponent,
+    DeleteConfirmComponent,
+    DialogComponent,
+    AddEditComponent,
+    TaskListComponent,
+    PreloaderComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    FormsModule,
+  ],
 
-	exports: [
-		MatFormFieldModule,
-		MatDialogModule,
-		MatInputModule,
-	],
+  exports: [
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule,
+  ],
 
-	entryComponents: [
-		LoaderInterceptor,
-	],
-	providers: [{
-		provide: HTTP_INTERCEPTORS,
-		useClass: LoaderInterceptor,
-		multi: true
-	},
-	LoaderService],
-	bootstrap: [AppComponent]
+  entryComponents: [
+    LoaderInterceptor,
+  ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoaderInterceptor,
+    multi: true
+  },
+  LoaderService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
